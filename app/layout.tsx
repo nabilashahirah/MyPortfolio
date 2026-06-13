@@ -25,7 +25,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://my-portfolio-delta-two-77.vercel.app"),
+  metadataBase: new URL("https://nabilashahirah.vercel.app"),
   title: "Nabila Shahirah — AI Engineer & Systems Builder",
   description:
     "Engineering Intelligence. Shaping Experience. AI Engineer, AR Developer, and Full-Stack Systems Builder. UPM Class of 2026.",

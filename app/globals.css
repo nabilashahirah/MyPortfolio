@@ -406,6 +406,12 @@ img { max-width: 100%; display: block; }
 /* ───────── Awards ───────── */
 .award .medal { font-size: 26px; }
 .award .yr { position: absolute; top: 28px; right: 26px; font-family: var(--font-jetbrains); font-size: 11px; color: var(--muted); }
+.award.featured { border-color: rgba(245,197,24,.45); background: linear-gradient(135deg, rgba(245,197,24,.12), rgba(255,46,136,.10)); box-shadow: 0 0 50px -18px rgba(245,197,24,.55); }
+.award.featured .ic { background: rgba(245,197,24,.12); border-color: rgba(245,197,24,.5); }
+.award.featured h3 { color: #FFD76A; font-size: 24px; }
+.award .badge-new { display: inline-block; margin-left: 10px; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #12020b; background: #FFD76A; padding: 3px 8px; border-radius: 6px; vertical-align: 4px; }
+@media (min-width: 761px) { .bento.three > .reveal:has(.award.featured) { grid-column: span 2; } }
+@media (min-width: 961px) { .bento.three > .reveal:last-child:has(.award) { grid-column: span 2; } }
 .award .ev { color: #fff; font-size: 14.5px; margin: 0 0 6px; font-weight: 500; line-height: 1.45; }
 
 /* ───────── FAQ ───────── */

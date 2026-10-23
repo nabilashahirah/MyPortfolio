@@ -81,7 +81,7 @@ export default function Image() {
           display: "flex", gap: 40, alignItems: "center",
         }}>
           {[
-            { value: "6", label: "Awards" },
+            { value: "7", label: "Awards" },
             { value: "5+", label: "Projects" },
             { value: "CGPA 3.67", label: "Dean's List" },
           ].map((s) => (

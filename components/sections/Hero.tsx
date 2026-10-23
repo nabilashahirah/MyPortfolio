@@ -25,7 +25,7 @@ const SCRIPT: Line[] = [
   ["dm", "$ ", "ls projects/"],
   ["hl", "", "toothymate  cardioverse  elrate  delligence  ilmora  perakkarate"],
   ["ag", "[toothymate] ", "MobileNetV2 on-device → plaque · calculus · cavity"],
-  ["okk", "✓ ", "Silver Award · iFYP 2026"],
+  ["okk", "✓ ", "Gold Medal · I-PICTL 2026  +  Silver Award · iFYP 2026"],
   ["ag", "[cardioverse] ", "ARCore + Unity → live 3D heart overlay"],
   ["okk", "✓ ", "Silver Medal · I-PICTL 2025"],
   ["ag", "[elrate] ", "AI review validation → Flutter + Firebase + GCP"],
@@ -91,7 +91,7 @@ function Console() {
         <span>Focus <b>AI · AR · Full-Stack</b></span>
         <span>CGPA <b>3.67</b></span>
         <span>Dean&apos;s List <b>3×</b></span>
-        <span>Awards <b>6</b></span>
+        <span>Awards <b>7</b></span>
       </div>
     </div>
   );

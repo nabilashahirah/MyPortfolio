@@ -20,9 +20,9 @@ const CATEGORIES: Category[] = [
         id: "toothymate",
         name: "ToothyMate",
         type: "AI · AR · Oral Health",
-        award: { emoji: "🥈", label: "Silver Award · iFYP 2026", color: "#E8729A" },
+        award: { emoji: "🥇", label: "Gold Medal · I-PICTL 2026", color: "#F5C518" },
         problem: "Children with dental conditions have no early-detection tools — plaque, calculus and cavities go unnoticed until they worsen.",
-        impact: ["On-device AI detects plaque, calculus & cavity via MobileNetV2", "AR tooth scanning designed for kids + AI chatbot for personalised guidance", "Industry collaboration with Klinik Pergigian Dr Karthi — validated by dental practitioners"],
+        impact: ["On-device AI detects plaque, calculus & cavity via MobileNetV2, with 90.0% classification accuracy", "Usability testing with 21 users scored 97.38 on the System Usability Scale", "AR tooth scanning designed for kids + AI chatbot for personalised guidance", "Industry collaboration with Klinik Pergigian Dr Karthi — validated by dental practitioners", "Also won the Silver Award at iFYP 2026 (FSKTM innovation showcase)"],
         stack: ["Flutter", "TFLite", "MobileNetV2", "ARCore", "Firebase", "Python"],
         images: [
           { src: "/ToothymateAR.png", alt: "ToothyMate AR education" },

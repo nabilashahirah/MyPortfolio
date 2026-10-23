@@ -4,7 +4,7 @@ import Reveal from "@/components/ui/Reveal";
 import { LEADERSHIP_TIMELINE } from "@/lib/constants";
 
 const LEADERSHIP_PHOTOS = Array.from({ length: 10 }, (_, i) => `/Leadership/leadership${i + 1}.jpg`);
-const AWARD_PHOTOS = Array.from({ length: 5 }, (_, i) => `/Award/award${i + 1}.jpg`);
+const AWARD_PHOTOS = ["/Award/ipictl2026-gold.png", ...Array.from({ length: 5 }, (_, i) => `/Award/award${i + 1}.jpg`)];
 
 /* Two counter-scrolling rows of photos; click one to enlarge. */
 function PhotoWall() {

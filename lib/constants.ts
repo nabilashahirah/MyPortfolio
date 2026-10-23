@@ -23,10 +23,10 @@ export const STACK_TAGS = [
 
 export const STATS = [
   {
-    value: 2,
+    value: 7,
     suffix: "",
-    label: "Silver Awards",
-    sub: "External competition judges",
+    label: "Awards & Medals",
+    sub: "Incl. Gold Medal, I-PICTL 2026",
   },
   {
     value: 5,
@@ -183,6 +183,13 @@ export const SKILL_CLUSTERS = [
 ];
 
 export const AWARDS = [
+  {
+    title: "Gold Medal",
+    event: "ToothyMate: AI+AR-Enabled Oral Health Education for Children through Interactive Mobile Learning",
+    competition: "Putra InnoCreative Poster Competition · I-PICTL 2026 × SULAM@UPM Carnival 2026",
+    year: "2026",
+    color: "#F5C518",
+  },
   {
     title: "Gold Medal Volunteer Leadership Award",
     event: "MAPUM MAMBA 2023",

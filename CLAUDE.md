@@ -22,7 +22,7 @@ Inter (`--font-inter`), JetBrains Mono (`--font-jetbrains`).
 ## Where things live
 
 - `app/page.tsx` — section order: Hero → Tapes → StatsBand → Works → About (+ roles) → Fingerprint
-  (skills) → Command (leadership + photo wall) → Weight (awards) → FAQ → Connect (CTA + footer).
+  (skills) → Command (leadership + photo wall) → Weight (awards) → Freelance → FAQ → Connect (CTA + footer).
 - `app/globals.css` — the whole design system: colour tokens in `:root`, component classes
   (`.card`, `.mock`, `.feature`, `.steps`, `.btn`, `.tape`, `.neon`, …). Prefer adding classes here
   over inline styles.
@@ -65,6 +65,10 @@ Inter (`--font-inter`), JetBrains Mono (`--font-jetbrains`).
 - The Datamicron Data Science internship (2026) is **finished**: show it as past experience, never "currently".
   Internship project: **Syntra** (internal registry lookup tool, Blazor/.NET), listed under the Web tab.
 - Freelance: Perak Legends Karate Academy (https://perakkarate.com), shown under the Freelance tab.
+- Freelance services section (`components/sections/Freelance.tsx`, after Awards): business/organisation
+  websites, landing pages, small web apps & dashboards, portfolio websites. Keep it secondary to the
+  full-time positioning. WhatsApp number + prefilled-message links live in `LINKS` in `Brand.tsx`;
+  `WhatsAppBubble.tsx` is the floating button (shows after scrolling past the hero).
 - Never invent achievements, metrics, or experience. If a claim isn't in `lib/constants.ts`, the
   project data, or confirmed by the owner, ask first.
 - The owner often writes in Malay / Manglish; replies can be in simple English.

@@ -12,6 +12,8 @@ import Fingerprint from "@/components/sections/Fingerprint";
 import Command from "@/components/sections/Command";
 import Weight from "@/components/sections/Weight";
 import FAQ from "@/components/sections/FAQ";
+import Freelance from "@/components/sections/Freelance";
+import WhatsAppBubble from "@/components/ui/WhatsAppBubble";
 import Connect from "@/components/sections/Connect";
 
 export default function Home() {
@@ -37,9 +39,11 @@ export default function Home() {
         <Fingerprint />
         <Command />
         <Weight />
+        <Freelance />
         <FAQ />
         <Connect />
       </main>
+      <WhatsAppBubble />
     </>
   );
 }

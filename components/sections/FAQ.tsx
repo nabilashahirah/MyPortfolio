@@ -25,6 +25,17 @@ const QA: { q: string; a: ReactNode }[] = [
     a: "Both. I've built whole systems alone, like Ilmora, and I've led people as president of a 200-member club (membership grew 40%) and as college representative for 1,000+ residents. I'm comfortable owning a codebase and coordinating people.",
   },
   {
+    q: "Do you take freelance projects?",
+    a: (
+      <>
+        Yes. I build business and organisation websites (like{" "}
+        <a href="https://perakkarate.com" target="_blank" rel="noopener noreferrer">perakkarate.com</a>), landing pages,
+        small web apps and dashboards, and portfolio websites.{" "}
+        <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer">Message me on WhatsApp</a> and tell me about your idea.
+      </>
+    ),
+  },
+  {
     q: "How do I get in touch?",
     a: (
       <>

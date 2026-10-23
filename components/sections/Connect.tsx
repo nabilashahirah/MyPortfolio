@@ -1,7 +1,7 @@
 "use client";
 import { ArrowRight, Mail, Download } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import { GithubIcon, LinkedinIcon, LINKS } from "@/components/ui/Brand";
+import { GithubIcon, LinkedinIcon, WhatsappIcon, LINKS } from "@/components/ui/Brand";
 
 export default function Connect() {
   return (
@@ -20,6 +20,7 @@ export default function Connect() {
           <a href={LINKS.email}><Mail size={16} /> {LINKS.emailText}</a>
           <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer"><LinkedinIcon /> nabila-shahirah</a>
           <a href={LINKS.github} target="_blank" rel="noopener noreferrer"><GithubIcon /> nabilashahirah</a>
+          <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer"><WhatsappIcon size={16} /> WhatsApp</a>
         </div>
       </Reveal>
 

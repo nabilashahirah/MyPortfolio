@@ -576,6 +576,47 @@ img { max-width: 100%; display: block; }
 .h2::after { content: ""; display: block; width: 64px; height: 3px; border-radius: 3px; margin-top: 18px; background: var(--grad); box-shadow: 0 0 16px rgba(255,46,136,.7); }
 .sec.center .h2::after { margin-left: auto; margin-right: auto; }
 
+/* ───────── Freelance + WhatsApp ───────── */
+.svc { display: flex; flex-direction: column; color: inherit; }
+.svc p { flex: 1; }
+.svc-cta { margin-top: 18px; display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #4ADE80; }
+.svc:hover .svc-cta { text-decoration: underline; }
+.fl-band { margin-top: 22px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; align-items: stretch; }
+@media (max-width: 900px) { .fl-band { grid-template-columns: 1fr; } }
+.fl-case { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--line2); min-height: 260px; display: block; }
+.fl-case img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s var(--ease); }
+.fl-case:hover img { transform: scale(1.04); }
+.fl-case::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,3,6,.95), rgba(5,3,6,.1) 60%); }
+.fl-case-cap { position: absolute; left: 20px; right: 20px; bottom: 18px; z-index: 1; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.fl-case-cap b { font-family: var(--font-grotesk); font-size: 20px; color: #fff; }
+.fl-case-cap > span:last-child { display: inline-flex; align-items: center; gap: 6px; color: var(--rose); font-size: 13.5px; }
+.fl-side { display: flex; flex-direction: column; gap: 18px; padding: 26px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
+.fl-steps { display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.fl-step { display: flex; gap: 14px; align-items: flex-start; }
+.fl-n { flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: var(--font-grotesk); font-weight: 700; color: #fff; background: var(--grad); box-shadow: 0 8px 20px -8px rgba(255,46,136,.7); }
+.fl-step b { font-family: var(--font-grotesk); color: #fff; font-size: 16px; }
+.fl-step p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.btn.wa { justify-content: center; border-color: transparent; background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; box-shadow: 0 16px 36px -14px rgba(37,211,102,.8); }
+.btn.wa:hover { border-color: #4ADE80; box-shadow: 0 0 26px -4px rgba(37,211,102,.7); }
+
+.wa-bubble {
+  position: fixed; right: 22px; bottom: 22px; z-index: 95; width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+  background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 14px 34px -8px rgba(37,211,102,.75);
+  opacity: 0; transform: translateY(20px) scale(.8); pointer-events: none; transition: opacity .35s, transform .35s var(--ease);
+}
+.wa-bubble.on { opacity: 1; transform: none; pointer-events: auto; }
+.wa-bubble:hover { transform: scale(1.08); }
+.wa-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: waring 2.2s ease-out infinite; }
+@keyframes waring { from { transform: scale(1); opacity: .8; } to { transform: scale(1.6); opacity: 0; } }
+.wa-tip {
+  position: absolute; right: 72px; top: 50%; transform: translateY(-50%); white-space: nowrap; pointer-events: none;
+  font-size: 13px; font-weight: 600; color: #fff; background: rgba(16,6,12,.95); border: 1px solid rgba(37,211,102,.45);
+  padding: 8px 12px; border-radius: 10px; opacity: 0; transition: opacity .25s;
+}
+.wa-bubble:hover .wa-tip { opacity: 1; }
+@media (max-width: 640px) { .wa-bubble { right: 16px; bottom: 16px; width: 54px; height: 54px; } .wa-tip { display: none; } }
+
 /* ───────── Phone / touch performance mode ─────────
    Keep the headline effects (tapes, floating logos, typing) but drop the
    expensive full-screen layers that make phones stutter. */

@@ -1,18 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E9BC4"/>
-      <stop offset="100%" stop-color="#E8729A"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1F0A18"/>
+      <stop offset="1" stop-color="#050306"/>
     </linearGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF8FC7"/>
+      <stop offset=".5" stop-color="#FF2E88"/>
+      <stop offset="1" stop-color="#B44CFF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".3" cy=".2" r=".9">
+      <stop offset="0" stop-color="#FF2E88" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#FF2E88" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="32" height="32" rx="8" fill="url(#g)"/>
-  <text
-    x="16" y="22"
-    text-anchor="middle"
-    font-family="system-ui, -apple-system, sans-serif"
-    font-weight="800"
-    font-size="13"
-    fill="white"
-    letter-spacing="-0.5"
-  >NS</text>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <rect width="64" height="64" rx="15" fill="url(#glow)"/>
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="none" stroke="#FF2E88" stroke-opacity=".55" stroke-width="2"/>
+  <path d="M18 46V18l24 28V18" fill="none" stroke="url(#ink)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="51" cy="46" r="4.5" fill="#FF2E88"/>
 </svg>

@@ -38,7 +38,7 @@ export const STATS = [
     value: 1000,
     suffix: "+",
     label: "Students Led & Represented",
-    sub: "Club President · College Rep, UPM",
+    sub: "Club President · College Representative, UPM",
   },
   {
     value: 35,

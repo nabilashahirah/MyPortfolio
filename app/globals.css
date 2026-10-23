@@ -358,6 +358,10 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-grotesk); font-weight: 600; font-size: 14px; padding: 9px 20px; border-radius: 10px; border: 0; cursor: pointer;
   background: transparent; color: var(--muted); transition: background .2s, color .2s;
 }
+@media (max-width: 420px) {
+  .tabs { display: flex; width: 100%; }
+  .tabs button { flex: 1; padding: 9px 6px; font-size: 13px; }
+}
 .tabs button.on { background: linear-gradient(135deg, #FF2E88, #D4136B); color: #fff; box-shadow: 0 10px 24px -10px rgba(255,46,136,.8); }
 
 /* ───────── Steps (leadership) ───────── */
@@ -518,7 +522,14 @@ img { max-width: 100%; display: block; }
 .tape.a .tq::after { content: "✦"; font-size: .7em; }
 .tape.b .tq { color: transparent; -webkit-text-stroke: 1.2px #FF8FC7; }
 .tape.b .tq::after { content: "✦"; color: #FF2E88; -webkit-text-stroke: 0; font-size: .7em; }
-@media (max-width: 640px) { .tapes { height: 170px; } }
+@media (max-width: 640px) {
+  .tapes { height: 200px; }
+  .tape { padding: 12px 0; }
+  .tape.b { top: 34%; }
+  .tape.a { top: 64%; }
+}
+/* keep the hero steady while the typed phrase wraps */
+@media (max-width: 640px) { .hero h1 { min-height: 4.1em; } }
 
 /* 3D tilt */
 .tilt { transition: transform .25s var(--ease), box-shadow .3s, border-color .3s; transform-style: preserve-3d; }

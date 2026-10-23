@@ -485,7 +485,7 @@ img { max-width: 100%; display: block; }
 @media (pointer: fine) { body, a, button { cursor: none; } }
 
 /* hero extras */
-.hero { position: relative; }
+.hero { position: relative; overflow-x: clip; }
 .hero-name {
   position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none;
   font-family: var(--font-grotesk); font-weight: 700; font-size: clamp(90px, 21vw, 330px); line-height: 1; letter-spacing: -.04em;
@@ -499,6 +499,38 @@ img { max-width: 100%; display: block; }
 .spark { position: absolute; color: #FF8FC7; pointer-events: none; animation: twinkle 3s ease-in-out infinite; text-shadow: 0 0 12px #FF2E88; z-index: -1; }
 @keyframes twinkle { 0%,100% { opacity: 0; transform: scale(.4) rotate(0); } 50% { opacity: 1; transform: scale(1) rotate(90deg); } }
 .hero h1 .glitch { position: relative; display: inline-block; }
+
+/* floating tech-stack logos (hero) */
+.stackfly { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.fly { position: absolute; transform: translate(calc(var(--px, 0) * var(--depth) * 1px), calc(var(--py, 0) * var(--depth) * 1px)); transition: transform .4s var(--ease); }
+.fly.p1 { right: -3%; top: 150px; }
+.fly.p2 { left: -4%; top: 250px; }
+.fly.p3 { right: 1%; top: 430px; }
+.fly-in { display: flex; flex-direction: column; align-items: center; gap: 9px; animation: flyfloat 6s ease-in-out infinite; }
+.fly.p2 .fly-in { animation-name: flyfloat2; }
+@keyframes flyfloat { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-18px) rotate(4deg); } }
+@keyframes flyfloat2 { 0%,100% { transform: translateY(-10px) rotate(5deg); } 50% { transform: translateY(12px) rotate(-3deg); } }
+.fly-tile {
+  width: 84px; height: 84px; border-radius: 24px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg, rgba(40,14,32,.85), rgba(10,4,9,.85)); border: 1px solid var(--line2);
+  backdrop-filter: blur(10px); box-shadow: 0 20px 50px -18px rgba(0,0,0,.9), 0 0 40px -6px var(--glow);
+}
+.fly-tile svg { width: 50px; height: 50px; overflow: visible; }
+.fly-label {
+  font-family: var(--font-jetbrains); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text);
+  padding: 4px 10px; border-radius: 999px; background: rgba(10,4,9,.75); border: 1px solid var(--line);
+}
+.spin-slow { animation: spinr 12s linear infinite; transform-origin: center; }
+@keyframes spinr { to { transform: rotate(360deg); } }
+@media (max-width: 1180px) { .fly.p1 { right: 1.5%; } .fly.p2 { left: 1.5%; } .fly.p3 { right: 2.5%; } .fly-tile { width: 68px; height: 68px; border-radius: 20px; } .fly-tile svg { width: 40px; height: 40px; } }
+/* phones/tablets: a floating row above the pill instead of around the headline */
+@media (max-width: 900px) {
+  .stackfly { position: static; display: flex; justify-content: center; gap: 18px; margin-bottom: 22px; }
+  .fly { position: static; transform: none; }
+  .fly-tile { width: 58px; height: 58px; border-radius: 17px; }
+  .fly-tile svg { width: 32px; height: 32px; }
+  .fly-label { font-size: 9.5px; padding: 3px 8px; }
+}
 
 /* spinning neon border: an oversized rotating conic gradient, clipped by the
    panel and covered by an inner fill so only a 1.5px rim shows */

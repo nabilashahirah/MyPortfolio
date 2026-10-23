@@ -1,9 +1,10 @@
 export const STACK_TAGS = [
+  "Next.js",
+  "React",
+  "FastAPI",
   "Flutter",
   "TensorFlow",
   "ARCore",
-  "React",
-  "FastAPI",
   "Unity",
   "PostgreSQL",
   "Firebase",

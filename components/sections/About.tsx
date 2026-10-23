@@ -8,7 +8,7 @@ import { STATS } from "@/lib/constants";
 
 const FACTS = [
   { k: "Education", v: "B.CS (Multimedia Computing), UPM" },
-  { k: "Currently", v: "Data Science Intern · Datamicron" },
+  { k: "Experience", v: "Data Science Intern · Datamicron (2026)" },
   { k: "Focus", v: "AI · AR · Full-Stack systems" },
   { k: "Open to", v: "Engineering · QA testing · BA / SA roles" },
 ];

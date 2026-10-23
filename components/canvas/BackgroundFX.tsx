@@ -113,6 +113,8 @@ export default function BackgroundFX() {
         const r = hero.getBoundingClientRect();
         hero.style.setProperty("--hx", `${e.clientX - r.left}px`);
         hero.style.setProperty("--hy", `${e.clientY - r.top + 80}px`);
+        hero.style.setProperty("--px", ((e.clientX / window.innerWidth) - 0.5).toFixed(3));
+        hero.style.setProperty("--py", ((e.clientY / window.innerHeight) - 0.5).toFixed(3));
       }
     };
     const onClick = (e: MouseEvent) => {

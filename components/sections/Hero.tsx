@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Download } from "lucide-react";
 import { LINKS } from "@/components/ui/Brand";
+import StackFly from "@/components/ui/StackFly";
 
 const PHRASES = [
   "spot cavities early.",
@@ -33,7 +34,7 @@ const SCRIPT: Line[] = [
   ["ag", "[delligence] ", "FastAPI + WebSocket → real-time patient queue"],
   ["ag", "[freelance] ", "perakkarate.com → 8-centre karate academy site"],
   ["okk", "✓ ", "live for a real client"],
-  ["pk", "[now] ", "Data Science Intern @ Datamicron Systems"],
+  ["pk", "[exp] ", "Data Science Intern @ Datamicron Systems ✓ completed"],
   ["dm", "$ ", "roles --open-to"],
   ["okk", "✓ ", "Software / AI Engineer · Software Tester · Business Analyst · System Analyst"],
 ];
@@ -104,6 +105,7 @@ export default function Hero() {
     <header className="hero" id="top">
       <div className="hero-spot" aria-hidden />
       <div className="hero-name" aria-hidden>NABILA</div>
+      <StackFly />
       {SPARKS.map((p, i) => (
         <span key={i} className="spark" aria-hidden style={{ left: p.l, top: p.t, fontSize: p.s, animationDelay: `${p.d}s` }}>✦</span>
       ))}

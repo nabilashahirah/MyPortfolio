@@ -10,7 +10,7 @@ const QA: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Why software testing, business analysis or systems analysis?",
-    a: "Every project I've built started with a real user's problem: dental practitioners for ToothyMate, the UPM Faculty of Medicine for CardioVerse, and a real client for Perak Karate. I enjoy that side of the work: gathering requirements, mapping how a process works today, and checking the finished system really does the job. My data-science internship at Datamicron adds the data analysis and reporting side.",
+    a: "Every project I've built started with a real user's problem: dental practitioners for ToothyMate, the UPM Faculty of Medicine for CardioVerse, and a real client for Perak Karate. I enjoy that side of the work: gathering requirements, mapping how a process works today, and checking the finished system really does the job. My completed data-science internship at Datamicron Systems added the data analysis and reporting side.",
   },
   {
     q: "Have you shipped anything real, or just class projects?",

@@ -93,7 +93,7 @@ const Console = memo(function Console() {
       <div className="cfoot">
         <span>Focus <b>AI · AR · Full-Stack</b></span>
         <span>CGPA <b>3.67</b></span>
-        <span>Dean&apos;s List <b>3×</b></span>
+        <span>Dean&apos;s List <b>4×</b></span>
         <span>Awards <b>7</b></span>
       </div>
     </div>

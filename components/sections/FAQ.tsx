@@ -18,7 +18,7 @@ const QA: { q: string; a: ReactNode }[] = [
   },
   {
     q: "What's your academic background?",
-    a: "I have a Bachelor of Computer Science (Multimedia Computing) from Universiti Putra Malaysia, with a CGPA of 3.67 and three Dean's List awards.",
+    a: "I have a Bachelor of Computer Science (Multimedia Computing) from Universiti Putra Malaysia, with a CGPA of 3.67 and four Dean's List awards.",
   },
   {
     q: "Do you work better solo or in a team?",

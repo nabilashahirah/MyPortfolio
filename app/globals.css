@@ -274,7 +274,7 @@ img { max-width: 100%; display: block; }
   -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
           mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
-.mtrack { display: flex; width: max-content; animation: scrollx 48s linear infinite; }
+.mtrack { display: flex; width: max-content; animation: scrollx 48s linear infinite; will-change: transform; }
 .marquee:hover .mtrack { animation-play-state: paused; }
 .mq { font-family: var(--font-grotesk); font-size: 18px; font-weight: 600; color: var(--muted); display: inline-flex; align-items: center; gap: 13px; white-space: nowrap; padding: 0 28px; }
 .mq::before { content: "✦"; color: var(--rose); font-size: 13px; }
@@ -390,7 +390,7 @@ img { max-width: 100%; display: block; }
   -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
           mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .wrow { overflow: hidden; }
-.wtrack { display: flex; gap: 16px; width: max-content; animation: scrollx 60s linear infinite; }
+.wtrack { display: flex; gap: 16px; width: max-content; animation: scrollx 60s linear infinite; will-change: transform; }
 .wtrack.rev { animation-direction: reverse; animation-duration: 70s; }
 .wrow:hover .wtrack { animation-play-state: paused; }
 .wph {
@@ -576,7 +576,22 @@ img { max-width: 100%; display: block; }
 .h2::after { content: ""; display: block; width: 64px; height: 3px; border-radius: 3px; margin-top: 18px; background: var(--grad); box-shadow: 0 0 16px rgba(255,46,136,.7); }
 .sec.center .h2::after { margin-left: auto; margin-right: auto; }
 
+/* ───────── Phone / touch performance mode ─────────
+   Keep the headline effects (tapes, floating logos, typing) but drop the
+   expensive full-screen layers that make phones stutter. */
+@media (hover: none), (max-width: 900px) {
+  .grain, .orb, .bgfx canvas, .hero-spot { display: none; }
+  body::before { animation: none; }
+  .card, .mock, .console, .step, .qa, .fly-tile { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .card, .step, .qa { background: rgba(26, 9, 21, .92); }
+  .neon::before, .console, .console::before, .btn.primary::before, .spin-slow { animation: none; }
+  .g { animation: none; filter: none; }
+  .card::after { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .reveal { opacity: 1; transform: none; }
+  /* banners keep drifting, just slower, so the page doesn't look frozen */
+  .mtrack, .wtrack { animation-duration: 120s !important; animation-iteration-count: infinite !important; }
 }

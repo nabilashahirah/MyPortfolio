@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { memo, type CSSProperties } from "react";
 
 function NextLogo() {
   return (
@@ -48,7 +48,7 @@ const ITEMS = [
 
 /* Floating tech-stack logos around the hero. Mouse parallax comes from the
    --px/--py variables BackgroundFX sets on .hero. */
-export default function StackFly() {
+function StackFly() {
   return (
     <div className="stackfly" aria-label="Main stack: Next.js, React, FastAPI">
       {ITEMS.map(({ name, Logo, glow, pos, depth, dur, delay }) => (
@@ -62,3 +62,5 @@ export default function StackFly() {
     </div>
   );
 }
+
+export default memo(StackFly);

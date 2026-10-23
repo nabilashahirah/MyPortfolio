@@ -17,6 +17,8 @@ export default function BackgroundFX() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* phones: skip the particle network entirely (CSS hides the canvas too) */
+    if (window.matchMedia("(hover: none), (max-width: 900px)").matches) return;
 
     let w = 0, h = 0, raf = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);

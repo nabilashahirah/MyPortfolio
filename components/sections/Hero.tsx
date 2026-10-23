@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { ArrowRight, Download } from "lucide-react";
 import { LINKS } from "@/components/ui/Brand";
 import StackFly from "@/components/ui/StackFly";
@@ -58,7 +58,8 @@ function useTyped(words: string[]) {
   return words[i].slice(0, n);
 }
 
-function Console() {
+/* memo: the typed headline re-renders Hero every few ms; the console doesn't need to follow */
+const Console = memo(function Console() {
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -97,7 +98,7 @@ function Console() {
       </div>
     </div>
   );
-}
+});
 
 export default function Hero() {
   const typed = useTyped(PHRASES);

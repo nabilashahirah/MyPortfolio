@@ -49,6 +49,9 @@ Inter (`--font-inter`), JetBrains Mono (`--font-jetbrains`).
 - Green (`--ok`) is only for "live"/status dots; gold only for award badges.
 - The owner wants it "gempak" (bold, high-impact): keep the motion effects, but every effect must
   respect `prefers-reduced-motion` and must not break layout at 390px width.
+- Phones/touch get a lighter "performance mode" (end of `globals.css`): no grain, orbs, particles,
+  backdrop blur or spinning borders. Keep it that way; check new effects stay smooth on phones.
+- Under `prefers-reduced-motion` the tape/photo banners still scroll (slowly); everything else stops.
 - Avoid `@property`-animated conic borders with mask-composite; they render glitchy. Use the
   existing `.neon` technique (rotating oversized gradient + inner fill).
 

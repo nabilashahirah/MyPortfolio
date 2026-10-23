@@ -1,28 +1,31 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const syne = Plus_Jakarta_Sans({
-  variable: "--font-syne",
+const grotesk = Space_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["italic"],
+  weight: ["500", "600"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#050306",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nabilashahirah.vercel.app"),
@@ -51,12 +54,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${inter.variable} ${playfair.variable} scroll-smooth`}
+      className={`${grotesk.variable} ${inter.variable} ${jetbrains.variable}`}
     >
-      <body
-        className="antialiased overflow-x-hidden"
-        style={{ background: "#FFFBEE", color: "#1C1210" }}
-      >
+      <body>
         {children}
       </body>
     </html>

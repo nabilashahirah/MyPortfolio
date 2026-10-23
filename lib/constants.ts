@@ -35,10 +35,10 @@ export const STATS = [
     sub: "Across 4 tech stacks",
   },
   {
-    value: 200,
-    suffix: "",
-    label: "Club Members Led",
-    sub: "As Club President, UPM",
+    value: 1000,
+    suffix: "+",
+    label: "Students Led & Represented",
+    sub: "Club President · College Rep, UPM",
   },
   {
     value: 35,

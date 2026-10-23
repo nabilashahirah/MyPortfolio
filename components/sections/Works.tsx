@@ -1,15 +1,13 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { VIEWPORT_ONCE } from "@/lib/animations";
-import GradientText from "@/components/ui/GradientText";
+import Reveal from "@/components/ui/Reveal";
 
 interface Award    { emoji: string; label: string; color: string; }
 interface Img      { src: string; alt: string; }
 interface Project  {
   id: string; name: string; type: string; award: Award | null;
   problem: string; impact: string[]; stack: string[];
-  images: Img[]; accentColor: string; isEnterprise?: boolean;
+  images: Img[]; accentColor: string; isEnterprise?: boolean; link?: string;
 }
 interface Category { id: string; label: string; projects: Project[]; }
 
@@ -95,247 +93,115 @@ const CATEGORIES: Category[] = [
       },
     ],
   },
+  {
+    id: "freelance",
+    label: "Freelance",
+    projects: [
+      {
+        id: "perakkarate",
+        name: "Perak Legends Karate Academy",
+        type: "Freelance · Client Website · Next.js",
+        award: { emoji: "▶", label: "Live · perakkarate.com", color: "#FF2E88" },
+        problem: "A karate academy with 8 centres across Perak needed one place where parents and students could find a centre, follow belt progression, see results and book a trial class.",
+        impact: ["Official academy website, live at perakkarate.com", "Covers 8 centres, an interactive belt progression chart, a Hall of Fame, coach profiles and an FAQ", "One-tap WhatsApp trial-class booking, plus Instagram and TikTok links"],
+        stack: ["Next.js", "React", "Cloudflare"],
+        images: [
+          { src: "/PerakKarate.png", alt: "Perak Legends Karate Academy website" },
+        ],
+        accentColor: "#FF2E88",
+        link: "https://perakkarate.com",
+      },
+    ],
+  },
 ];
 
-/* ─── Right panel: images ─────────────────────────────────────────── */
-const PANEL_W   = "44%";
-const IMG_H     = 210;
-
-function ImagePanel({ images, accent }: { images: Img[]; accent: string }) {
-  if (images.length === 0) {
-    return (
-      <div style={{
-        width: "100%", flexShrink: 0,
-        borderLeft: "1px solid rgba(30,120,180,0.06)",
-        background: `linear-gradient(145deg, ${accent}10, ${accent}03)`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: "50%",
-          background: `${accent}15`, border: `1.5px solid ${accent}30`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
-          <div style={{ width: 20, height: 1.5, background: accent, borderRadius: 2 }} />
-        </div>
+function Shots({ project }: { project: Project }) {
+  const wide = project.images.length === 1;
+  return (
+    <div className="mock neon tilt">
+      <div className="wbar">
+        <i /><i /><i />
+        <span className="ttl">{project.id}.app</span>
+        {project.award?.label.startsWith("Live") && <span className="lv"><span className="dot" /> LIVE</span>}
       </div>
-    );
-  }
-
-  if (images.length === 2) {
-    return (
-      <div style={{
-        width: "100%", flexShrink: 0,
-        display: "flex", alignItems: "center", gap: "4px", padding: "12px 8px",
-        borderLeft: "1px solid rgba(30,120,180,0.06)",
-      }}>
-        {images.map((img) => (
-          <div key={img.src} style={{ flex: 1, height: `${IMG_H}px`, overflow: "hidden" }}>
+      <div className={`mb n${project.images.length}`}>
+        {project.images.map((img) => (
+          <div key={img.src} className={`shot ${wide ? "wide" : ""}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={img.src} alt={img.alt} style={{
-              width: "100%", height: "100%",
-              objectFit: "contain", objectPosition: "top center",
-              display: "block", mixBlendMode: "multiply",
-            }} />
+            <img src={img.src} alt={img.alt} loading="lazy" />
           </div>
         ))}
       </div>
-    );
-  }
-
-  /* 3 images: all side by side, same size */
-  return (
-    <div style={{
-      width: "100%", flexShrink: 0,
-      display: "flex", alignItems: "center", gap: "10px", padding: "16px",
-      borderLeft: "1px solid rgba(30,120,180,0.06)",
-    }}>
-      {images.map((img) => (
-        <div key={img.src} style={{ flex: 1, minWidth: 0, height: `${IMG_H}px`, overflow: "hidden" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img.src} alt={img.alt} style={{
-            width: "100%", height: "100%",
-            objectFit: "contain", objectPosition: "top center",
-            display: "block", mixBlendMode: "multiply",
-          }} />
-        </div>
-      ))}
     </div>
   );
 }
 
-/* ─── Project card (horizontal) ───────────────────────────────────── */
-function ProjectCard({ project }: { project: Project }) {
+function Feature({ project, reverse }: { project: Project; reverse: boolean }) {
+  const { award } = project;
   return (
-    <div style={{
-      display: "flex", minHeight: "240px",
-      borderRadius: "18px", overflow: "hidden",
-      background: "#FFFFFF",
-      border: "1px solid rgba(30,120,180,0.09)",
-      boxShadow: "0 4px 24px rgba(30,100,160,0.07), 0 1px 4px rgba(30,100,160,0.04)",
-    }}>
-
-      {/* LEFT: content */}
-      <div style={{ flex: 1, padding: "28px 28px 24px", display: "flex", flexDirection: "column", gap: "14px" }}>
-
-        {/* Type + badges */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-          <span style={{
-            fontFamily: "var(--font-inter)", fontSize: "9px", fontWeight: 700,
-            letterSpacing: "0.12em", textTransform: "uppercase", color: project.accentColor,
-          }}>{project.type}</span>
-          {project.isEnterprise && (
-            <span style={{
-              fontFamily: "var(--font-inter)", fontSize: "9px", fontWeight: 600,
-              background: "rgba(100,180,220,0.15)", border: "1px solid rgba(100,180,220,0.3)",
-              borderRadius: "999px", padding: "1.5px 8px", color: "#C47090",
-            }}>Enterprise</span>
-          )}
-          {project.award && (
-            <span style={{
-              fontFamily: "var(--font-inter)", fontSize: "9px", fontWeight: 700,
-              background: `${project.award.color}12`, border: `1px solid ${project.award.color}30`,
-              borderRadius: "999px", padding: "1.5px 8px", color: project.award.color,
-            }}>{project.award.emoji} {project.award.label}</span>
-          )}
+    <div className={`feature ${reverse ? "rev" : ""}`}>
+      <Reveal className="ftext">
+        {award && (
+          award.label.startsWith("Live") ? (
+            <span className="live" style={{ marginBottom: 16 }}><span className="dot" /> {award.label}</span>
+          ) : (
+            <span className="tagp" style={{ color: "#F5C76B", background: "rgba(245,199,107,.1)", border: "1px solid rgba(245,199,107,.3)", marginBottom: 16 }}>
+              {award.emoji} {award.label}
+            </span>
+          )
+        )}
+        <h3>{project.name}</h3>
+        <div className="ftype" style={{ color: "var(--rose)" }}>{project.type}</div>
+        <p className="fd">{project.problem}</p>
+        <ul className="feat">
+          {project.impact.map((i) => <li key={i}>{i}</li>)}
+        </ul>
+        <div className="chips">
+          {project.stack.map((t) => <span className="chip" key={t}>{t}</span>)}
         </div>
-
-        {/* Name */}
-        <h3 style={{
-          fontFamily: "var(--font-syne)", fontWeight: 800,
-          fontSize: "clamp(20px, 1.8vw, 26px)", lineHeight: 1.05,
-          letterSpacing: "-0.02em", color: "#0B2840", margin: 0,
-        }}>{project.name}</h3>
-
-        {/* Problem */}
-        <div style={{ paddingLeft: "12px", borderLeft: `2px solid ${project.accentColor}50` }}>
-          <p style={{
-            fontFamily: "var(--font-inter)", fontSize: "9px", fontWeight: 700,
-            letterSpacing: "0.10em", textTransform: "uppercase",
-            color: project.accentColor, marginBottom: "5px",
-          }}>Problem</p>
-          <p style={{ fontFamily: "var(--font-inter)", fontSize: "12.5px", color: "#1A5068", lineHeight: 1.65, margin: 0 }}>
-            {project.problem}
-          </p>
-        </div>
-
-        {/* Impact */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-          {project.impact.map((item) => (
-            <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
-              <span style={{ color: project.accentColor, fontSize: "12px", flexShrink: 0, fontWeight: 700, marginTop: "1px" }}>✓</span>
-              <p style={{ fontFamily: "var(--font-inter)", fontSize: "12.5px", color: "#1A5068", lineHeight: 1.55, margin: 0 }}>{item}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Stack */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "auto", paddingTop: "14px", borderTop: "1px solid rgba(30,120,180,0.07)" }}>
-          {project.stack.map((tag) => (
-            <span key={tag} style={{
-              fontFamily: "var(--font-inter)", fontSize: "10px", fontWeight: 500,
-              background: "#F0F8FF", border: "1px solid rgba(30,120,180,0.11)",
-              borderRadius: "999px", padding: "2px 10px", color: "#2A6880",
-            }}>{tag}</span>
-          ))}
-        </div>
-
-      </div>
-
-      {/* RIGHT: images — hidden on mobile */}
-      <div className="hidden md:block" style={{ flexShrink: 0, width: PANEL_W }}>
-        <ImagePanel images={project.images} accent={project.accentColor} />
-      </div>
-
+        {project.link && (
+          <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn sm" style={{ marginTop: 20 }}>
+            Visit live site ↗
+          </a>
+        )}
+      </Reveal>
+      <Reveal delay={120}>
+        <Shots project={project} />
+      </Reveal>
     </div>
   );
 }
 
-/* ─── Main ─────────────────────────────────────────────────────────── */
+const FILTERS = [{ id: "all", label: "All" }, ...CATEGORIES.map(({ id, label }) => ({ id, label }))];
+
 export default function Works() {
-  const [active, setActive] = useState(0);
-  const category = CATEGORIES[active];
+  const [filter, setFilter] = useState("all");
+  const projects = CATEGORIES.filter((c) => filter === "all" || c.id === filter).flatMap((c) => c.projects);
 
   return (
-    <section
-      id="intelligence"
-      className="relative overflow-hidden"
-      style={{ background: "#FFFFFF", paddingTop: "clamp(72px,10vh,120px)", paddingBottom: "clamp(72px,10vh,120px)" }}
-    >
-      <div className="absolute pointer-events-none" style={{
-        top: 0, left: 0, width: "55%", height: "100%",
-        background: "radial-gradient(ellipse 55% 45% at 15% 40%, rgba(30,155,196,0.06) 0%, rgba(232,114,154,0.04) 60%, transparent 85%)",
-      }} />
-
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* Header + tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={VIEWPORT_ONCE}
-          transition={{ duration: 0.6 }}
-          className="flex items-end justify-between gap-6 flex-wrap mb-10"
-        >
+    <section className="sec" id="work">
+      <Reveal>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, flexWrap: "wrap", marginBottom: 64 }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
-              <div style={{ width: 28, height: 1.5, background: "linear-gradient(90deg, #1E9BC4, #E8729A)" }} />
-              <span style={{
-                fontFamily: "var(--font-inter)", fontSize: "10px", fontWeight: 600,
-                letterSpacing: "0.12em", textTransform: "uppercase", color: "#C4799A",
-              }}>Selected Work</span>
-            </div>
-            <h2 style={{
-              fontFamily: "var(--font-syne)", fontWeight: 800,
-              fontSize: "clamp(36px, 5vw, 60px)", lineHeight: 0.95,
-              letterSpacing: "-0.03em", color: "#0B2840",
-            }}>
-              Featured <GradientText from="#1E9BC4" via="#E8729A" to="#7ECDE8">Projects</GradientText>
-            </h2>
+            <span className="eyebrow">Selected work</span>
+            <h2 className="h2">Products that solve <span className="g">real problems</span></h2>
+            <p className="lead" style={{ marginBottom: 0 }}>
+              Each project started with a problem someone actually had. Some won awards, one is live on
+              the Play Store, and one is a client site that&apos;s live right now.
+            </p>
           </div>
-
-          <div style={{ display: "flex", gap: "8px", paddingBottom: "4px" }}>
-            {CATEGORIES.map((cat, i) => (
-              <button
-                key={cat.id}
-                onClick={() => setActive(i)}
-                style={{
-                  fontFamily: "var(--font-inter)", fontSize: "12px", fontWeight: 600,
-                  padding: "8px 20px", borderRadius: "999px", border: "none", cursor: "pointer",
-                  transition: "all 0.22s ease",
-                  background: active === i ? "linear-gradient(135deg, #1E9BC4, #E8729A)" : "rgba(30,120,180,0.08)",
-                  color: active === i ? "#FFFFFF" : "#2A6880",
-                  boxShadow: active === i ? "0 3px 12px rgba(232,114,154,0.22)" : "none",
-                }}
-              >
-                {cat.label}
+          <div className="tabs" role="tablist">
+            {FILTERS.map((f) => (
+              <button key={f.id} role="tab" aria-selected={filter === f.id} className={filter === f.id ? "on" : ""} onClick={() => setFilter(f.id)}>
+                {f.label}
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
+      </Reveal>
 
-        {/* Cards */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={category.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            style={{ display: "flex", flexDirection: "column", gap: "14px" }}
-          >
-            {category.projects.map((project, i) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
+      <div key={filter}>
+        {projects.map((p, i) => <Feature key={p.id} project={p} reverse={i % 2 === 1} />)}
       </div>
     </section>
   );

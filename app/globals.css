@@ -37,7 +37,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -485,7 +485,7 @@ img { max-width: 100%; display: block; }
 @media (pointer: fine) { body, a, button { cursor: none; } }
 
 /* hero extras */
-.hero { position: relative; overflow-x: clip; }
+.hero { position: relative; }
 .hero-name {
   position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none;
   font-family: var(--font-grotesk); font-weight: 700; font-size: clamp(90px, 21vw, 330px); line-height: 1; letter-spacing: -.04em;
@@ -503,9 +503,9 @@ img { max-width: 100%; display: block; }
 /* floating tech-stack logos (hero) */
 .stackfly { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .fly { position: absolute; transform: translate(calc(var(--px, 0) * var(--depth) * 1px), calc(var(--py, 0) * var(--depth) * 1px)); transition: transform .4s var(--ease); }
-.fly.p1 { right: -3%; top: 150px; }
-.fly.p2 { left: -4%; top: 250px; }
-.fly.p3 { right: 1%; top: 430px; }
+.fly.p1 { right: 0; top: 150px; }
+.fly.p2 { left: 0; top: 250px; }
+.fly.p3 { right: 3%; top: 430px; }
 .fly-in { display: flex; flex-direction: column; align-items: center; gap: 9px; animation: flyfloat 6s ease-in-out infinite; }
 .fly.p2 .fly-in { animation-name: flyfloat2; }
 @keyframes flyfloat { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-18px) rotate(4deg); } }

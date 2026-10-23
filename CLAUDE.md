@@ -60,6 +60,7 @@ Inter (`--font-inter`), JetBrains Mono (`--font-jetbrains`).
 - Leadership: don't headline "Club President" on its own. She led as **club president and college
   representative** — mention both together. Keep it out of the Tapes banner.
 - The Datamicron Data Science internship (2026) is **finished**: show it as past experience, never "currently".
+  Internship project: **Syntra** (internal registry lookup tool, Blazor/.NET), listed under the Web tab.
 - Freelance: Perak Legends Karate Academy (https://perakkarate.com), shown under the Freelance tab.
 - Never invent achievements, metrics, or experience. If a claim isn't in `lib/constants.ts`, the
   project data, or confirmed by the owner, ask first.

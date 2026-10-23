@@ -66,6 +66,19 @@ const CATEGORIES: Category[] = [
     label: "Web",
     projects: [
       {
+        id: "syntra",
+        name: "Syntra",
+        type: "Internship · Datamicron · Internal Tool",
+        award: { emoji: "💼", label: "Datamicron Internship", color: "#F5C76B" },
+        problem: "Looking up a record in a third-party registry meant writing curl commands by hand, which was slow and needed technical know-how.",
+        impact: ["Replaced manual curl commands: enter an ID and get the matching registry record in profile, table or raw views", "Built the middleware that calls the registry API, with configurable endpoints and headers", "Defensive parser that handles missing or inconsistently typed fields", "API Manager to save, run and map API configurations to tables, plus an API Tester"],
+        stack: ["Blazor", ".NET", "C#", "REST APIs", "JSON"],
+        images: [
+          { src: "/Syntra.png", alt: "Syntra API Manager screen" },
+        ],
+        accentColor: "#F5C76B",
+      },
+      {
         id: "delligence",
         name: "Delligence",
         type: "Full-Stack · Clinic SaaS",

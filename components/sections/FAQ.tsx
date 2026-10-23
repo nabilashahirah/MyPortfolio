@@ -14,7 +14,7 @@ const QA: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Have you shipped anything real, or just class projects?",
-    a: "Yes, real. I built perakkarate.com for a karate academy with 8 centres across Perak, and it's live now. ELrate is live on the Google Play Store. ToothyMate was validated with dental practitioners at Klinik Pergigian Dr Karthi, scored 97.38 on usability testing with 21 users, and won a Gold Medal at I-PICTL 2026. CardioVerse was built with the UPM Faculty of Medicine. I was the sole architect and developer of Ilmora.",
+    a: "Yes, real. I built perakkarate.com for a karate academy with 8 centres across Perak, and it's live now. ELrate is live on the Google Play Store. ToothyMate was validated with dental practitioners at Klinik Pergigian Dr Karthi, scored 97.38 on usability testing with 21 users, and won a Gold Medal at I-PICTL 2026. CardioVerse was built with the UPM Faculty of Medicine. I was the sole architect and developer of Ilmora, and during my Datamicron internship I built Syntra, an internal registry lookup tool.",
   },
   {
     q: "What's your academic background?",

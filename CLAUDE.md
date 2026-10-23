@@ -52,6 +52,9 @@ Inter (`--font-inter`), JetBrains Mono (`--font-jetbrains`).
 - Phones/touch get a lighter "performance mode" (end of `globals.css`): no grain, orbs, particles,
   backdrop blur or spinning borders. Keep it that way; check new effects stay smooth on phones.
 - Under `prefers-reduced-motion` the tape/photo banners still scroll (slowly); everything else stops.
+- Use `overflow-x: clip` (never `hidden`) on `html`/`body`/sections: `hidden` turns the element into a
+  scroll box and silently breaks the sticky nav. Pause-on-hover effects must sit inside
+  `@media (hover: hover)` or a tap on a phone pauses them forever.
 - Avoid `@property`-animated conic borders with mask-composite; they render glitchy. Use the
   existing `.neon` technique (rotating oversized gradient + inner fill).
 

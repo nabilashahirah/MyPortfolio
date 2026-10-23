@@ -46,7 +46,7 @@ body {
   font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden would make body a scroll box and break the sticky nav */
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -275,7 +275,7 @@ img { max-width: 100%; display: block; }
           mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 .mtrack { display: flex; width: max-content; animation: scrollx 48s linear infinite; will-change: transform; }
-.marquee:hover .mtrack { animation-play-state: paused; }
+@media (hover: hover) { .marquee:hover .mtrack { animation-play-state: paused; } }
 .mq { font-family: var(--font-grotesk); font-size: 18px; font-weight: 600; color: var(--muted); display: inline-flex; align-items: center; gap: 13px; white-space: nowrap; padding: 0 28px; }
 .mq::before { content: "✦"; color: var(--rose); font-size: 13px; }
 @keyframes scrollx { to { transform: translateX(-50%); } }
@@ -392,7 +392,7 @@ img { max-width: 100%; display: block; }
 .wrow { overflow: hidden; }
 .wtrack { display: flex; gap: 16px; width: max-content; animation: scrollx 60s linear infinite; will-change: transform; }
 .wtrack.rev { animation-direction: reverse; animation-duration: 70s; }
-.wrow:hover .wtrack { animation-play-state: paused; }
+@media (hover: hover) { .wrow:hover .wtrack { animation-play-state: paused; } }
 .wph {
   flex: 0 0 auto; height: 200px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
   background: var(--card-solid); transition: transform .3s, border-color .3s; cursor: zoom-in; padding: 0;
@@ -634,5 +634,5 @@ img { max-width: 100%; display: block; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .reveal { opacity: 1; transform: none; }
   /* banners keep drifting, just slower, so the page doesn't look frozen */
-  .mtrack, .wtrack { animation-duration: 120s !important; animation-iteration-count: infinite !important; }
+  .mtrack, .wtrack { animation-duration: 70s !important; animation-iteration-count: infinite !important; }
 }
